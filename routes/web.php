@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('index');
@@ -22,6 +24,17 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
+// Admin Auth Routes
+Route::get('/admin', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/admin', [LoginController::class, 'login']);
+Route::post('/admin/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Protected Admin Routes
+Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/contacts', [ContactController::class, 'index'])->name('contacts.index');
+});
 
 
 Route::prefix('services')->name('services.')->group(function () {
