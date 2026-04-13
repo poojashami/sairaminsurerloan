@@ -109,64 +109,38 @@
       <div class="col-lg-8 m-auto">
         <div class="heading1 text-center">
           <span class="span" data-aos="zoom-in-center" data-aos-duration="700"><img src="{{ asset('assets/img/icons/span1.png') }}" alt="" />Our Services</span>
-          <h2 class="title tg-element-title mb-5">Comprehensive financial solutions tailored to your needs</h2>
+          <h2 class="title tg-element-title mb-5">Comprehensive insurance solutions tailored to your needs</h2>
         </div>
       </div>
       <div class="service-one-inner">
+        @php
+          $homeServices = [
+              'retail-health-insurance' => ['title' => 'RETAIL HEALTH INSURANCE', 'icon' => 'fa-heart-pulse', 'desc' => 'Comprehensive health coverage for you and your family.'],
+              'motor-insurance' => ['title' => 'MOTOR INSURANCE', 'icon' => 'fa-car', 'desc' => 'Protect your vehicles with our robust motor insurance plans.'],
+              'fire-insurance' => ['title' => 'FIRE INSURANCE', 'icon' => 'fa-fire-extinguisher', 'desc' => 'Safeguard your property and assets against fire-related risks.'],
+              'burglary-insurance' => ['title' => 'BURGLARY INSURANCE', 'icon' => 'fa-mask', 'desc' => 'Specialized coverage against theft and burglary attempts.'],
+              'industrial-all-risk' => ['title' => 'INDUSTRIAL ALL RISK', 'icon' => 'fa-industry', 'desc' => 'Comprehensive protection for large-scale industrial operations.'],
+              'marine-insurance' => ['title' => 'MARINE INSURANCE', 'icon' => 'fa-ship', 'desc' => 'Insurance solutions for cargo and transit across domestic and international waters.'],
+          ];
+        @endphp
+        @foreach($homeServices as $slug => $s)
         <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-1.png') }}" alt="MSME Limit"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-industry"></i></div>
-          <div class="service-one-info">
-            <h4>MSME / CGTMSE Limit</h4>
-            <p>Collateral-free credit for Micro and Small Enterprises under government-backed schemes.</p>
+          <div class="service-one-box-image">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" alt="{{ $s['title'] }}">
           </div>
-          <a class="read-more-btn" href="{{ route('services.msme-limit') }}"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-2.png') }}" alt="OD Limit"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-money-bill-transfer"></i></div>
-          <div class="service-one-info">
-            <h4>Overdraft (OD) Limit</h4>
-            <p>Flexible overdraft limits to manage your working capital efficiently. Pay interest only on what you use.</p>
+          <div class="service-one-icon-box">
+            <i class="fa-solid {{ $s['icon'] }}"></i>
           </div>
-          <a class="read-more-btn" href="{{ route('services.od-limit') }}"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-3.png') }}" alt="Business Loan"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-briefcase"></i></div>
           <div class="service-one-info">
-            <h4>Business Loans</h4>
-            <p>Empower your business with our flexible financing options. Tailored to meet your unique needs.</p>
+            <h4>{{ $s['title'] }}</h4>
+            <p>{{ $s['desc'] }}</p>
           </div>
-          <a class="read-more-btn" href="{{ route('services.business-loan') }}"><i class="fa-solid fa-arrow-right"></i></a>
+          <a class="read-more-btn" href="{{ route('services.show', $slug) }}"><i class="fa-solid fa-arrow-right"></i></a>
         </div>
-        <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-4.png') }}" alt="Home Loan"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-house-chimney"></i></div>
-          <div class="service-one-info">
-            <h4>Home Loan</h4>
-            <p>Turn your dream home into reality with low interest rates and a hassle-free application process.</p>
-          </div>
-          <a class="read-more-btn" href="{{ route('services.home-loan') }}"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-5.png') }}" alt="LAP"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-building"></i></div>
-          <div class="service-one-info">
-            <h4>Loan Against Property</h4>
-            <p>Unlock the hidden potential of your property for your personal or business milestones.</p>
-          </div>
-          <a class="read-more-btn" href="{{ route('services.lap') }}"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="service-one-box">
-          <div class="service-one-box-image"><img src="{{ asset('assets/img/service/services-6.png') }}" alt="Personal Loan"></div>
-          <div class="service-one-icon-box"><i class="fa-solid fa-user-tie"></i></div>
-          <div class="service-one-info">
-            <h4>Personal Loan</h4>
-            <p>Quick and convenient personal loans for medical, wedding, or travel needs with minimal documentation.</p>
-          </div>
-          <a class="read-more-btn" href="{{ route('services.personal-loan') }}"><i class="fa-solid fa-arrow-right"></i></a>
-        </div>
+        @endforeach
+      </div>
+      <div class="col-lg-12 text-center mt-5">
+          <a href="{{ route('services') }}" class="hero-btn-outline" style="color: var(--ztc-bg-main-bg-1); border-color: var(--ztc-bg-main-bg-1);">View All 30+ Services <span><i class="fa-solid fa-arrow-right"></i></span></a>
       </div>
     </div>
   </div>
@@ -273,18 +247,18 @@
       <div class="col-lg-9">
         <div class="trust-content">
           <div class="trust-badge" data-aos="fade-up"><i class="fa-solid fa-heart"></i> WHY CHOOSE</div>
-          <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Your trusted partner for personalized loan solutions, expert financial guidance</h2>
+          <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Your trusted partner for personalized insurance solutions, expert protection guidance</h2>
           <img src="{{ asset('assets/img/others/why-choose-image.jpg') }}" alt="Consultation" class="trust-banner-img" data-aos="zoom-in">
           <div class="trust-features">
             <div class="trust-feature-item" data-aos="fade-up" data-aos-delay="200">
               <i class="fa-solid fa-user-gear"></i>
-              <h5>Personalized Loan</h5>
-              <p>We offer customized loan options tailored to meet your specific financial needs and goals.</p>
+              <h5>Personalized Insurance</h5>
+              <p>We offer customized insurance options tailored to meet your specific protection needs and goals.</p>
             </div>
             <div class="trust-feature-item" data-aos="fade-up" data-aos-delay="300">
               <i class="fa-solid fa-award"></i>
               <h5>Competitive Rates</h5>
-              <p>Benefit from competitive rates designed to make your loan more affordable and manageable.</p>
+              <p>Benefit from competitive rates designed to make your insurance more affordable and manageable.</p>
             </div>
             <div class="trust-feature-item" data-aos="fade-up" data-aos-delay="400">
               <i class="fa-solid fa-handshake-angle"></i>

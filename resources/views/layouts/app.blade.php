@@ -56,12 +56,12 @@
                   <li class="dropdown-menu-parrent">
                     <a href="#" class="{{ request()->is('services*') ? 'active' : '' }}">Services <i class="fa-solid fa-angle-down"></i></a>
                     <ul>
-                      <li><a href="{{ route('services.business-loan') }}">Business Loan</a></li>
-                      <li><a href="{{ route('services.od-limit') }}">Over Draft Limit (OD)</a></li>
-                      <li><a href="{{ route('services.msme-limit') }}">MSME LIMIT (MSME)</a></li>
-                      <li><a href="{{ route('services.lap') }}">Loan Against Property (LAP)</a></li>
-                      <li><a href="{{ route('services.home-loan') }}">Home Loan</a></li>
-                      <li><a href="{{ route('services.personal-loan') }}">Personal Loan</a></li>
+                      <li><a href="{{ route('services.show', 'retail-health-insurance') }}">Retail Health Insurance</a></li>
+                      <li><a href="{{ route('services.show', 'motor-insurance') }}">Motor Insurance</a></li>
+                      <li><a href="{{ route('services.show', 'fire-insurance') }}">Fire Insurance</a></li>
+                      <li><a href="{{ route('services.show', 'burglary-insurance') }}">Burglary Insurance</a></li>
+                      <li><a href="{{ route('services.show', 'marine-insurance') }}">Marine Insurance</a></li>
+                      <li><a href="{{ route('services') }}"><strong>View All 30+ Services</strong></a></li>
                     </ul>
                   </li>
                   <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About Us</a></li>
@@ -106,12 +106,10 @@
         <li class="has-dropdown">
           <a href="#" class="{{ request()->is('services*') ? 'active' : '' }}">Services</a>
           <ul class="sub-menu">
-            <li><a href="{{ route('services.business-loan') }}">Business Loan</a></li>
-            <li><a href="{{ route('services.od-limit') }}">Over Draft (OD)</a></li>
-            <li><a href="{{ route('services.msme-limit') }}">MSME Limit</a></li>
-            <li><a href="{{ route('services.lap') }}">LAP</a></li>
-            <li><a href="{{ route('services.home-loan') }}">Home Loan</a></li>
-            <li><a href="{{ route('services.personal-loan') }}">Personal Loan</a></li>
+            <li><a href="{{ route('services.show', 'retail-health-insurance') }}">Health Insurance</a></li>
+            <li><a href="{{ route('services.show', 'motor-insurance') }}">Motor Insurance</a></li>
+            <li><a href="{{ route('services.show', 'fire-insurance') }}">Fire Insurance</a></li>
+            <li><a href="{{ route('services') }}">View All Services</a></li>
           </ul>
         </li>
         <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a></li>
@@ -165,12 +163,11 @@
           <div class="single-footer-items">
             <h3>Service We Offer</h3>
             <ul class="menu-list">
-              <li><a href="{{ route('services.business-loan') }}">Business Loan</a></li>
-              <li><a href="{{ route('services.od-limit') }}">Over Draft Limit (OD)</a></li>
-              <li><a href="{{ route('services.msme-limit') }}">MSME Limit</a></li>
-              <li><a href="{{ route('services.lap') }}">Loan Against Property (LAP)</a></li>
-              <li><a href="{{ route('services.home-loan') }}">Home Loan</a></li>
-              <li><a href="{{ route('services.personal-loan') }}">Personal Loan</a></li>
+              <li><a href="{{ route('services.show', 'retail-health-insurance') }}">Health Insurance</a></li>
+              <li><a href="{{ route('services.show', 'motor-insurance') }}">Motor Insurance</a></li>
+              <li><a href="{{ route('services.show', 'fire-insurance') }}">Fire Insurance</a></li>
+              <li><a href="{{ route('services.show', 'marine-insurance') }}">Marine Insurance</a></li>
+              <li><a href="{{ route('services') }}">And 25+ more...</a></li>
             </ul>
           </div>
         </div>

@@ -38,10 +38,49 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth', 'as' => 'admin.'], fu
 
 
 Route::prefix('services')->name('services.')->group(function () {
-    Route::get('/business-loan', function () { return view('services.business-loan'); })->name('business-loan');
-    Route::get('/od-limit', function () { return view('services.od-limit'); })->name('od-limit');
-    Route::get('/msme-limit', function () { return view('services.msme-limit'); })->name('msme-limit');
-    Route::get('/lap', function () { return view('services.lap'); })->name('lap');
-    Route::get('/home-loan', function () { return view('services.home-loan'); })->name('home-loan');
-    Route::get('/personal-loan', function () { return view('services.personal-loan'); })->name('personal-loan');
+    Route::get('/{slug}', function ($slug) {
+        $services = [
+            'retail-health-insurance' => 'RETAIL HEALTH INSURANCE',
+            'motor-insurance' => 'MOTOR INSURANCE',
+            'fire-insurance' => 'FIRE INSURANCE',
+            'burglary-insurance' => 'BURGLARY INSURANCE',
+            'industrial-all-risk' => 'INDUSTRIAL ALL RISK',
+            'marine-insurance' => 'MARINE INSURANCE',
+            'commercial-general-liability' => 'COMMERCIAL GENERAL LIABILITY',
+            'directors-and-officers-liability' => 'DIRECTORS AND OFFICERS LIABILITY',
+            'public-liability' => 'PUBLIC LIABILITY',
+            'cyber-liability' => 'CYBER LIABILITY',
+            'employee-dishonesty-commercial-crime' => 'EMPLOYEE DISHONESTY /COMMERCIAL CRIME',
+            'fidelity-guarantee' => 'FIDELITY GUARANTEE',
+            'machinary-breakdown' => 'MACHINARY BREAKDOWN',
+            'electronic-equipment-portable-equipments' => 'ELECTRONIC EQUIPMENT/PORTABLE EQUIPMENTS',
+            'erection-all-risk' => 'ERECTION ALL RISK',
+            'contractor-all-risk' => 'CONTRACTOR ALL RISK',
+            'contractor-plant-and-machinary' => 'CONTRACTOR PLANT AND MACHINARY',
+            'workmens-compensation' => 'WORKMENS COMPENSATION',
+            'group-health-insurance' => 'GROUP HEALTH INSURANCE',
+            'group-personal-accident' => 'GROUP PERSONAL ACCIDENT',
+            'professional-indemnity' => 'PROFESSIONAL INDEMNITY-DOCTORS,ENGINEERS,C.A.,MISCELLANEOUS',
+            'surety-bond' => 'SURETY BOND-BID AND PERFORMANCE',
+            'trade-credit' => 'TRADE CREDIT',
+            'event-insurance' => 'EVENT INSURANCE',
+            'places-of-worship-insurance' => 'PLACES OF WORSHIP INSURANCE',
+            'interior-insurance' => 'INTERIOR INSURANCE',
+            'extended-warranty-insurance' => 'EXTENDED WARRANTY INSURANCE',
+            'jellers-block-insurance' => 'JELLERS BLOCK INSURANCE',
+            'art-insurance' => 'ART INSURANCE',
+            'aviation-hull-liability' => 'AVIATION HULL AND LIABILITY INSURANCE',
+            'retail-cyber-insurance' => 'RETAIL CYBER INSURANCE',
+        ];
+
+        if (!isset($services[$slug])) {
+            abort(404);
+        }
+
+        return view('services.show', [
+            'title' => $services[$slug],
+            'slug' => $slug,
+            'allServices' => $services
+        ]);
+    })->name('show');
 });
